@@ -5,8 +5,8 @@
 
     <div class="col-md-12">
       <a href="{{ .Permalink }}">
-        <img src="{{ "/img/" | relURL }}{{ .Params.image_preview }}" class="pub-banner"
-             itemprop="image">
+        <img src="{{ "/img/" | relURL }}{{ .Params.image_preview }}" class="publication-banner"
+             itemprop="image" style="max-width: 65%">
       </a>
     </div>
     <div class="col-md-12">
@@ -15,7 +15,7 @@
 
     <div class="col-md-12">
       <a href="{{ .Permalink }}">
-        <img src="{{ "/img/" | relURL }}{{ .Params.header.image }}" class="pub-banner" itemprop="image">
+        <img src="{{ "/img/" | relURL }}{{ .Params.header.image }}" class="publication-banner" itemprop="image" style="max-width: 65%">
       </a>
     </div>
     <div class="col-md-12">
@@ -45,11 +45,18 @@
       </div>
 
       <div class="pub-publication">
-        {{ if .Params.publication_short }}
-        {{ .Params.publication_short | markdownify }}
-        {{ else }}
-        {{ .Params.publication | markdownify }}
-        {{ end }}
+          {{ if .Params.preprint }}
+            Submitted to
+          {{ else}}
+            In
+          {{ end }}
+          <i>
+          {{ if .Params.publication_short }}
+              {{ .Params.publication_short | markdownify }}
+          {{ else }}
+              {{ .Params.publication | markdownify }}
+          {{ end }}
+          </i>
       </div>
 
       <div class="pub-links">
