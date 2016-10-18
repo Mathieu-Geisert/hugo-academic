@@ -25,7 +25,7 @@
 <div class="article-container">
 
   {{ if .Params.image }}
-  <img src="{{ "/img/" | relURL }}{{ .Params.image }}" class="pub-banner" itemprop="image">
+  <img src="{{ "/img/" | relURL }}{{ .Params.image }}" class="publication-banner" itemprop="image" style="max-width: 50%">
   {{end}}
 
   <h3>{{ i18n "abstract" }}</h3>

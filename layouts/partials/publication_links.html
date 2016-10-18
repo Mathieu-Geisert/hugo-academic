@@ -11,6 +11,16 @@
   {{ i18n "btn_pdf" }}
 </a>
 {{ end }}
+{{ with $.Params.url_openaccess }}
+<a class="btn btn-primary btn-outline{{ if $is_list }} btn-xs{{end}}" href="{{ . | absURL }}">
+  Open Access
+</a>
+{{ end }}
+{{ with $.Params.url_doi }}
+<a class="btn btn-primary btn-outline{{ if $is_list }} btn-xs{{end}}" href="{{ . | absURL }}">
+  DOI
+</a>
+{{ end }}
 {{ with $.Params.url_slides }}
 <a class="btn btn-primary btn-outline{{ if $is_list }} btn-xs{{end}}" href="{{ . | absURL }}">
   {{ i18n "btn_slides" }}
