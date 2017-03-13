@@ -1,8 +1,8 @@
 {{ $ := .root }}
 {{ $page := .page }}
-{{ $preprints_len := len (where (where $.Data.Pages "Type" "publication") ".Params.preprint" true) }}
+{{ $submissions_len := len (where (where $.Data.Pages "Type" "publication") ".Params.submission" true) }}
 
-<!-- Preprints widget -->
+<!-- Submissions widget -->
 <div class="row">
   <div class="col-xs-12 col-md-4 section-heading">
     <h1>{{ with $page.Title }}{{ . | markdownify }}{{ end }}</h1>
@@ -12,12 +12,12 @@
     {{ with $page.Content }}<p>{{ . | markdownify }}</p>{{ end }}
 
     {{ if $page.Params.detailed_list }}
-    {{ range (where (where $.Data.Pages "Type" "publication") ".Params.preprint" true) }}
+    {{ range (where (where $.Data.Pages "Type" "publication") ".Params.submission" true) }}
     {{ partial "publication_li_detailed" . }}
     {{ end }}
     {{ else }}
     <ul class="fa-ul">
-      {{ range (where (where $.Data.Pages "Type" "publication") ".Params.preprint" true) }}
+      {{ range (where (where $.Data.Pages "Type" "publication") ".Params.submission" true) }}
       {{ partial "publication_li_simple" . }}
       {{ end }}
     </ul>
