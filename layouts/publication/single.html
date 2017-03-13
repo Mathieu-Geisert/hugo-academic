@@ -1,4 +1,4 @@
-{{ partial "header.html" . }}
+      {{ partial "header.html" . }}
 {{ partial "navbar.html" . }}
 <div class="pub" itemscope itemtype="http://schema.org/CreativeWork">
 
@@ -24,7 +24,7 @@
   {{end}}
 
   <h3>{{ i18n "abstract" }}</h3>
-  <p class="pub-abstract" itemprop="text">{{ .Params.abstract | markdownify }}</p>
+  <div class="pub-abstract" itemprop="text" align="justify"> {{ .Params.abstract | markdownify }}</div>
 
   {{ if (.Params.publication_types) and (ne (index .Params.publication_types 0) "0") }}
   <div class="row">
