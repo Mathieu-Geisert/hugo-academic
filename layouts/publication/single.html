@@ -4,7 +4,7 @@
 
   {{ partial "header_image.html" . }}
 
-  <div class="container pub-title">
+  <div class="container pub-title" align="center">
     <h1 itemprop="name">{{ .Title }}</h1>
     <span class="pub-authors" itemprop="author">
       {{ with .Params.authors }}
@@ -20,7 +20,9 @@
 <div class="article-container">
 
   {{ if .Params.image }}
-  <img src="{{ "/img/" | relURL }}{{ .Params.image }}" class="publication-banner" itemprop="image" style="max-width: 50%">
+  </br>
+  <img src="{{ "/img/" | relURL }}{{ .Params.image }}" class="publication-banner" itemprop="image" style="max-width: 70%">
+  </br>
   {{end}}
 
   <h3>{{ i18n "abstract" }}</h3>
