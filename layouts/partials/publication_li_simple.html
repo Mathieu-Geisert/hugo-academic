@@ -1,5 +1,22 @@
 <li itemscope itemtype="http://schema.org/CreativeWork">
   <i class="fa-li fa fa-file-text-o pub-icon" aria-hidden="true"></i>
   <span itemprop="name">{{ .Title }}</span>
-  <p>{{ partial "publication_links" (dict "content" . "is_list" 1) }}</p>
+      <div class="pub-authors" itemprop="author">
+        {{ with .Params.authors }}
+        {{ delimit . ", " | markdownify }}
+        {{ end }}
+      </div>
+
+       <div class="pub-publication">
+          {{ if .Params.submission }}
+            Submitted to
+          {{ else}}
+            In  
+          {{ end }}
+          <i> 
+            {{ .Params.publication | markdownify }},
+            {{ .Date.Format "2006" }}
+          </i>
+      </div>
+  <p>{{ partial "publication_links_detailed" (dict "content" . "is_list" 1 "show_abstract_btn" 0) }}</p>
 </li>

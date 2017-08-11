@@ -5,6 +5,9 @@
 
 # Buttons
 
+- id: btn_abtract
+  translation: Résumés
+
 - id: btn_details
   translation: Renseignements
 

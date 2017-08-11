@@ -4,6 +4,8 @@
   translation: Zur Navigation
 
 # Buttons
+- id: btn_abstract
+  translation: Abstract
 
 - id: btn_details
   translation: Details

@@ -3,40 +3,28 @@
 
     {{ if .Params.image_preview }}
 
-    <div class="col-md-12">
+    <!-- <div class="col-md-12">
       <a href="{{ .Permalink }}">
         <img src="{{ "/img/" | relURL }}{{ .Params.image_preview }}" class="publication-banner"
              itemprop="image" style="max-width: 65%">
       </a>
-    </div>
-    <div class="col-md-12">
+    </div> -->
 
     {{ else if .Params.header.image}}
 
-    <div class="col-md-12">
+    <!-- <div class="col-md-12">
       <a href="{{ .Permalink }}">
         <img src="{{ "/img/" | relURL }}{{ .Params.header.image }}" class="publication-banner" itemprop="image" style="max-width: 65%">
       </a>
-    </div>
-    <div class="col-md-12">
-
-    {{ else }}
-
-    <div class="col-md-12">
+    </div> -->
 
     {{ end }}
+
+    <div class="col-md-12">
 
       <h3 class="article-title" itemprop="name">
         <a href="{{ .Permalink }}" itemprop="url">{{ .Title }}</a>
       </h3>
-
-      <div class="pub-abstract" itemprop="text">
-        {{ if .Params.abstract_short }}
-        {{ .Params.abstract_short | markdownify }}
-        {{ else }}
-        {{ .Params.abstract | markdownify}}
-        {{ end }}
-      </div>
 
       <div class="pub-authors" itemprop="author">
         {{ with .Params.authors }}
@@ -44,25 +32,42 @@
         {{ end }}
       </div>
 
-      <div class="pub-publication">
+       <div class="pub-publication">
           {{ if .Params.submission }}
             Submitted to
           {{ else}}
             In
           {{ end }}
           <i>
-          {{ if .Params.publication_short }}
-              {{ .Params.publication_short | markdownify }}
-          {{ else }}
-              {{ .Params.publication | markdownify }}
-          {{ end }}
+            {{ .Params.publication | markdownify }},
+            {{ .Date.Format "2006" }}
           </i>
       </div>
 
       <div class="pub-links">
-        {{ partial "publication_links" (dict "content" . "is_list" 1) }}
+        {{ partial "publication_links_detailed" (dict "content" . "is_list" 1 "show_abstract_btn" 1) }}
       </div>
+
+     <div class="pub-abstract" itemprop="text" id="{{.Params.title}}" style="display: none">
+        {{ .Params.abstract }}
+      </div>
+
+    <div style="height:20px">
+    </div>
 
     </div>
   </div>
 </div>
+
+<script>
+function showContent(id) {
+  if(document.getElementById(id).style.display == '')
+  {
+    document.getElementById(id).style.display='none';
+  }
+  else 
+  {
+    document.getElementById(id).style.display='';
+  }
+}
+</script>
